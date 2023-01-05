@@ -18,9 +18,15 @@ def fetch_html_content(url: str):
     try:
         response = request.get(url, timeout=1)
         return response.text
+    except requests.exceptions.HTTPError as errh:
+        logging.exception(f"The {url} has Http Error:", errh)
+    except requests.exceptions.ConnectionError as errc:
+        logging.exception(f"The {url} has Error Connecting Problem:", errc)
+    except requests.exceptions.Timeout as errt:
+        logging.exception(f"The {url} has Timeout Error:", errt)
     except requests.exceptions.RequestException as err:
         logging.exception(f"The url {url} has Something Else:", err)
-    return None
+    return Non
 
 
 def get_linked_urls(url: str, html: str):
