@@ -26,7 +26,7 @@ def fetch_html_content(url: str):
         logging.exception(f"The {url} has Timeout Error:", errt)
     except requests.exceptions.RequestException as err:
         logging.exception(f"The url {url} has Something Else:", err)
-    return Non
+    return None
 
 
 def get_linked_urls(url: str, html: str):
