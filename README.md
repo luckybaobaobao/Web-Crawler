@@ -31,3 +31,10 @@ Concurrency:
 The WebCrawler uses multiprocessing to achieve concurrency. Without multithreading, one thread needs to wait a long time 
 (around one second on my local machine) to get a response. Multithreading can save waiting time for responses, 
 allowing the CPU to execute other threads. Multithreading makes the app much more efficient.
+
+
+Testing:
+The unit tests cover 76% of the code, except lines 75-77, 81-84 in main.py (which is the args part; I don't think we need to test it :|).
+
+Retry logic:
+For the requirements, I chose a strategy of retrying three times to visit a website. I chose this strategy because I don't think it's really necessary to save the URL and revisit it in the future in this case.
