@@ -1,21 +1,26 @@
-Dependencies:
-The crawler needs to run with Python 3.6 and later.
+## Dependencies:
+
+The crawler needs to run with **Python 3.6** and later.
 You need to install all the dependencies, such as bs4/beautifulsoup4, which is used for HTTP parsing.
 requests_mock is used to mock the HTTP requests in unittest. 
 Coverage is used for unit testing and to get the test coverage.
 
 To install all the dependencies, you can run:
-pip install -r requirements.txt
+pip install -r **requirements.txt**
 
 To crawl any website, you can run:
-python main.py url
+**python main.py url**
 
-To run the tests and coverage:
+## To run the tests and coverage:
+
 python -m unittest discover
+
 coverage run -m unittest discover
+
 coverage report -m
 
-The design of this app:
+## The design of this app:
+
 This web crawler is a mini app. When you provide a small entry URL, the crawler will print all the URLs on the same domain, 
 as well as all the links found on the pages.
 
@@ -25,16 +30,18 @@ we fetch the HTML content, parse it, extract the URLs from the content, validate
 -The other storage component is "visited_urls." Every time we extract a URL from urls_queue, we will add this URL to the visited_urls set. 
 We do this because there might be a cycle, for example, we visit "a," get "b," then we visit "b" and get "a" again.
 
-Some key points:
+## Some key points:
 
-Concurrency:
+**Concurrency:**
 The WebCrawler uses multiprocessing to achieve concurrency. Without multithreading, one thread needs to wait a long time 
 (around one second on my local machine) to get a response. Multithreading can save waiting time for responses, 
 allowing the CPU to execute other threads. Multithreading makes the app much more efficient.
 
 
-Testing:
+## Testing:
+
 The unit tests cover 76% of the code, except lines 75-77, 81-84 in main.py (which is the args part; I don't think we need to test it :|).
 
-Retry logic:
+## **Retry logic:**
+
 For the requirements, I chose a strategy of retrying three times to visit a website. I chose this strategy because I don't think it's really necessary to save the URL and revisit it in the future in this case.
