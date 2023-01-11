@@ -42,6 +42,6 @@ allowing the CPU to execute other threads. Multithreading makes the app much mor
 
 The unit tests cover 76% of the code, except lines 75-77, 81-84 in main.py (which is the args part; I don't think we need to test it :|).
 
-## **Retry logic:**
+## Retry logic:
 
 For the requirements, I chose a strategy of retrying three times to visit a website. I chose this strategy because I don't think it's really necessary to save the URL and revisit it in the future in this case.
